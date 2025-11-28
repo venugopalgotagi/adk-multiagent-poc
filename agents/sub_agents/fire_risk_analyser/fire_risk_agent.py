@@ -1,10 +1,8 @@
-import google.adk
-from google.adk.agents.parallel_agent import ParallelAgent
-from utils.vra_util import logger_before_agent_callback,logger_after_agent_callback
 import os
 from google.adk.agents.llm_agent import LlmAgent
-
 from google.adk.models.lite_llm import LiteLlm
+
+from utils.vra_util import logger_before_agent_callback, logger_after_agent_callback
 
 ollama_llm = LiteLlm(
     model=os.getenv("LLM_MODEL"),

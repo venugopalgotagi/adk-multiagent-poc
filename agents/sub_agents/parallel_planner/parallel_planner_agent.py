@@ -1,8 +1,6 @@
 # Create a summary agent to gather and format results
 import google.adk.agents
-from google.adk.agents import LlmAgent
 
-import agents.sub_agents.construction_risk_analyser.construction_risk_agent
 import agents.sub_agents.fire_risk_analyser.fire_risk_agent
 from utils.vra_util import logger_before_agent_callback, logger_after_agent_callback
 
