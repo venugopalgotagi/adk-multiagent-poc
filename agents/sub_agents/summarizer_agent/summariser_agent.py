@@ -12,6 +12,7 @@ import os
 from google.adk.agents import LlmAgent
 
 import utils.vra_util
+from utils.prompt_service import PromptService
 
 dotenv.load_dotenv()
 
@@ -22,12 +23,7 @@ ollama_llm = google.adk.models.lite_llm.LiteLlm(
 summary_agent = LlmAgent(
     model=ollama_llm,
     name="RiskSummaryAgent",
-    instruction="""
-    You are a final report generator. Summarize the fire_risks  
-    (from state['fire_risk_report']) and the construction risks  
-    (from state['construction_risk_report']) into a single, cohesive, and friendly 
-    response for the user. Do not include technical keys or formats.
-    """,
+    instruction=PromptService.get_latest_prompt("risk_summary_agent_instruction", app_name=os.getenv("APP_NAME", "Video_Risk_Assessment"), region=os.getenv("REGION", "us-central1")),
     before_agent_callback=[utils.vra_util.logger_before_agent_callback],
     after_agent_callback=[utils.vra_util.logger_after_agent_callback],
 )

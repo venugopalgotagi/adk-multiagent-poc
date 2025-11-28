@@ -6,3 +6,6 @@ psycopg2-binary
 asyncpg
 greenlet
 fastapi
+sqlalchemy
+uvicorn
+python-multipart
