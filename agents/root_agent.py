@@ -7,6 +7,7 @@ It also configures callbacks for logging.
 
 import dotenv
 
+import agents.sub_agents.parallel_planner.parallel_planner_agent
 import agents.sub_agents.summarizer_agent.summariser_agent
 import utils.vra_util
 

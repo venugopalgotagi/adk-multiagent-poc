@@ -4,7 +4,7 @@ This module defines the main entry point for the Video Risk Assessment (VRA) ser
 It sets up the FastAPI application, initializes the ADK runner with necessary services
 (database, memory, artifacts), and defines the API endpoints.
 """
-
+import os
 import fastapi
 import google.adk.artifacts
 import google.adk.memory
@@ -24,7 +24,7 @@ load_dotenv()  # load API keys and settings
 rest_api_app = FastAPI()
 
 session_service = google.adk.sessions.database_session_service.DatabaseSessionService(
-    db_url="postgresql+asyncpg://postgres:postgres@localhost:5432/postgres")
+    db_url=os.getenv("DATABASE_URL"))
 memory_service = google.adk.memory.InMemoryMemoryService()
 runner = google.adk.Runner(
     app=app,
