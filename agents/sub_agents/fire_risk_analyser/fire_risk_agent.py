@@ -1,3 +1,10 @@
+"""Fire risk analysis agent.
+
+This module defines an LLM-based agent responsible for analyzing video content
+to identify fire-related risks and hazards. It focuses on the Fire Triangle
+(Fuel, Heat/Ignition, Oxygen/Oxidizer) and provides a detailed risk assessment.
+"""
+
 import os
 from google.adk.agents.llm_agent import LlmAgent
 from google.adk.models.lite_llm import LiteLlm

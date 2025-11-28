@@ -1,3 +1,10 @@
+"""Root agent configuration for the Video Risk Assessment application.
+
+This module defines the root agent, which is a sequential agent that orchestrates
+the execution of sub-agents: the parallel planner and the summarizer agent.
+It also configures callbacks for logging.
+"""
+
 import dotenv
 
 import agents.sub_agents.summarizer_agent.summariser_agent

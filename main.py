@@ -1,3 +1,10 @@
+"""FastAPI application for Video Risk Assessment.
+
+This module defines the main entry point for the Video Risk Assessment (VRA) service.
+It sets up the FastAPI application, initializes the ADK runner with necessary services
+(database, memory, artifacts), and defines the API endpoints.
+"""
+
 import fastapi
 import google.adk.artifacts
 import google.adk.memory
@@ -29,6 +36,16 @@ runner = google.adk.Runner(
 
 @rest_api_app.post("/video_risk_assessment")
 async def video_risk_assessment(user_id: str, risk_type: str, file: fastapi.UploadFile = File(...)):
+    """Performs video risk assessment on an uploaded video file.
+
+    Args:
+        user_id: The unique identifier of the user requesting the assessment.
+        risk_type: The type of risk to analyze (e.g., 'fire', 'construction').
+        file: The uploaded video file to be analyzed.
+
+    Returns:
+        The final response from the RiskSummaryAgent containing the assessment results.
+    """
     try:  # run_debug() requires ADK Python 1.18 or higher:
         session = await session_service.create_session(app_name=app.name,
                                                        user_id=user_id,
@@ -66,5 +83,13 @@ async def video_risk_assessment(user_id: str, risk_type: str, file: fastapi.Uplo
 
 
 async def get_payload(file: UploadFile) -> bytes:
+    """Reads the content of an uploaded file.
+
+    Args:
+        file: The uploaded file object.
+
+    Returns:
+        The content of the file as bytes.
+    """
     video_stream = await file.read()
     return video_stream

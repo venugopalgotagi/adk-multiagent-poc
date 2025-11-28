@@ -1,3 +1,10 @@
+"""Summarizer agent configuration.
+
+This module defines the summarizer agent, which is responsible for aggregating
+the risk reports from the fire and construction risk agents into a single,
+cohesive, and user-friendly summary.
+"""
+
 # Create a summary agent to gather and format results
 import dotenv
 import google.adk.models.lite_llm

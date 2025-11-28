@@ -1,3 +1,10 @@
+"""Construction risk analysis agent.
+
+This module defines an LLM-based agent responsible for analyzing video content
+to identify construction-related risks and hazards. It uses a specific persona
+and set of constraints to ensure accurate and relevant safety assessments.
+"""
+
 import os
 from google.adk.agents.llm_agent import LlmAgent
 from google.adk.models.lite_llm import LiteLlm

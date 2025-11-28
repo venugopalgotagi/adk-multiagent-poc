@@ -1,3 +1,10 @@
+"""Parallel planner agent configuration.
+
+This module defines the parallel planner agent, which orchestrates the execution
+of risk analysis sub-agents (fire and construction) in parallel. It handles
+the distribution of the video assessment task.
+"""
+
 # Create a summary agent to gather and format results
 import google.adk.agents
 
