@@ -20,7 +20,7 @@ from typing import Optional, List
 
 from vra_app.app import app  # import code from agent.py
 from utils.prompt_service import PromptService
-from utils.models import init_db
+from utils.models import init_db, PromptCreate, PromptUpdate, PromptResponse
 
 load_dotenv()  # load API keys and settings
 # Set a Runner using the imported application object
@@ -41,32 +41,7 @@ runner = google.adk.Runner(
 )
 
 
-# Pydantic Models for Prompt CRUD
-class PromptCreate(BaseModel):
-    """Schema for creating a new prompt."""
-    name: str
-    content: str
-    app_name: Optional[str] = None  # Will use env variable if not provided
-    region: Optional[str] = None  # Will use env variable if not provided
 
-
-class PromptUpdate(BaseModel):
-    """Schema for updating an existing prompt."""
-    content: str
-
-
-class PromptResponse(BaseModel):
-    """Schema for prompt response."""
-    id: int
-    name: str
-    app_name: str
-    region: str
-    version: int
-    content: str
-    created_at: str
-
-    class Config:
-        from_attributes = True
 
 
 @rest_api_app.post("/video_risk_assessment")
